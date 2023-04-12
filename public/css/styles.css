@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0px 5px;
+    height: 25px;
+    border: solid 2px black;
+    font-size: 25px;
+    background-color: black;
+    color: white;
+}
+    
+a {
+    margin: 0px 25px;
+    color: white;
+}
+
+.index-main {
+    display: flex;
+    font-size: 50px;
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px black;
+}
+
