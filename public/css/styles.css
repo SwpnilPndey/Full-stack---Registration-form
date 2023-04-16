@@ -23,3 +23,83 @@ a {
     border: solid 2px black;
 }
 
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin-top: 100px;
+   
+   
+}
+
+.register-page-label {
+    width: 100px;
+} 
+
+.register-page-input {
+    width: 300px;
+    height: 35px;
+    font-size: 18px;
+}
+
+#register-page-label-email {
+    margin-right: 83px;
+}
+
+#register-page-label-username {
+    margin-right: 0px;
+}
+
+#register-page-label-password {
+    margin-right: 11px;
+}
+
+#register-form {
+    border: solid 2px black;
+}
+
+#register-page-submit {
+    margin-left: 215px;
+    font-size: 35px;
+    margin-bottom: 35px;
+}
+
+.login-form {
+    border: solid 2px black;
+    font-size: 45px;
+    margin-top: 200px;
+}
+
+.login-page-input {
+    width: 300px;
+    height: 35px;
+    font-size: 18px;
+}
+
+#login-page-label-username {
+    margin-right: 0px;
+}
+
+#login-page-label-password {
+    margin-right: 10px;
+}
+
+#login-page-login {
+    margin-left: 215px;
+    font-size: 35px;
+    margin-bottom: 35px;
+}
+
+
+
+
+
