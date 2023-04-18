@@ -1,6 +1,8 @@
 const mongoose=require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/Registration",{
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGO_URI,{
     useNewUrlParser:true,
     }).then(()=>{
     console.log("Connection to database is successful");
