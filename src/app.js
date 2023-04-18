@@ -6,20 +6,26 @@ require("./db/conn");
 const hbs=require("hbs");
 const Register=require("./models/registers");
 
+
 const static_path=path.join(__dirname,"../public");
 const views_path=path.join(__dirname,"../templates/views");
 const partials_path=path.join(__dirname,"../templates/partials");
 
 const bcrypt=require("bcryptjs");
 
+
+
 app.use(express.json());
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:false}));
 
 app.use(express.static(static_path));
+
 
 app.set("view engine","hbs");
 app.set("views",views_path);
 hbs.registerPartials(partials_path);
+
+
 
 app.get("/",(req,res)=> {
     res.render("index");
@@ -37,7 +43,7 @@ app.post("/register",async(req,res)=> {
             email:req.body.email
         })
 
-        const registered= await register.save();
+       const registered= await register.save();
        res.status(201).render("main");
         
 
@@ -72,9 +78,6 @@ app.post("/login",async(req,res)=> {
 })
 
 
-app.get("/",(req,res)=>{
-    res.send("Hello lets learn full stack development"); 
-})
 
 app.listen(port,()=> {
     console.log(`Server running at ${port}`);
