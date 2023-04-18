@@ -1,88 +1,332 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Marketplace Website</title>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
     <style>
+      
 
-        header { 
-        background-color: #000000; 
-        color: #fff; 
-        margin-bottom: 50px; 
-        } 
-        .products {
-        display: flex; 
-        } 
-        img { 
-        width: 20vw; 
-        height: 40vh; 
-        }
-        p {
-        font-size: 30px;
-        font-weight: bold;
-        margin-left: 125px;
 
-        }
 
-        .main-page-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        }
+
+body{
+    background-color: black;
+}
+
+#disclaimer {
+    color: white;
+    font-size: larger;
+    border: solid 2px white;
+    padding-left: 10px;
+}
+
+
+
+.gameContainer{ 
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: repeat(3, 10vw);
+    grid-template-columns: repeat(3, 10vw);
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+
+.box{
+    border: 2px solid white;
+    font-size: 8vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome {
+    color: white;
+    margin-left: 200px;
+    height: 50px;
+}
+
+.boxtext {
+    color: white;
+}
+
+.box:hover{
+    background-color: rgb(73, 72, 71);
+}
+
+.info {
+    display: flex;
+    font-size: 100px;
+    color: white;
+    margin: 100px;
+    border: solid 2px white;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.gameInfo{
+    padding: 0 34px;
+    
+}
+
+.gameInfo h1{
+    font-size: 2.5rem;
+}
+
+.imgbox {
+    display: flex;
+    justify-content: center;
+}
+.imgbox img{
+    width: 0px;
+    transition: width 1s ease-in-out;
+    padding-right: 20px;
+}
+
+.br-0{
+    border-right: 0;
+}
+
+.bl-0{
+    border-left: 0;
+}
+
+.bt-0{
+    border-top: 0;
+}
+
+.bb-0{
+    border-bottom: 0;
+}
+
+#resetholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reset {
+    
+    margin: 0 23px;
+    padding: 1px 18px;
+    background: #f3e7f9;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bolder;
+    height: 60px;
+}
+
+
+
+@media screen and (max-width: 950px)
+{
+    .gameContainer{
+        flex-wrap: wrap;
+    }
+    .gameInfo{
+        margin-top: 34px;
+    }
+    .gameInfo h1{
+        font-size: 1.5rem;
+    }
+    .container { 
+        grid-template-rows: repeat(3, 20vw);
+        grid-template-columns: repeat(3, 20vw);
+    }
+}
+
+
+.names {
+    height: 100px;
+    width: 300px;
+    margin: 50px;
+    font-size: 35px;
+}
+
+
+.score {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 40px;
+   font-size: 50px;
+   color: white;
+}
+
+#player1 {
+    margin-right: 400px;
+}
+
 
     </style>
-
   </head>
   <body>
-    <header class="main-page-header">
-      <h1>WELCOME TO THE MARKETPLACE</h1>
-    </header>
-    <div class="products">
 
-      <div class="product">
-        <img
-          src="https://lh3.googleusercontent.com/uY0DBQik6UA-8r3u940KST-4No0y-XK9SdLkA8cirg9XMg5hw43uvY04aMt_suipYETIU-g7GYZ12T1nUvefZBSpugr9xlvkvVb9L6p5EibJwYIX2A"
-          alt="Product 1"
-        />
+    <div id="disclaimer">
+      Disclaimer : This Game currently works only for desktop viewport. However, soon it will be made responsive too. Inconvenience is regretted.
+    </div>
+    
 
-        <p>$90.00</p>
-
+    <div class="gameContainer">
+        <div class="container">
+         
+          <div class="box bt-0 bl-0"><span class="boxtext"></span></div>
+          <div class="box bt-0"><span class="boxtext"></span></div>
+          <div class="box bt-0 br-0"><span class="boxtext"></span></div>
+          <div class="box bl-0"><span class="boxtext"></span></div>
+          <div class="box"><span class="boxtext"></span></div>
+          <div class="box br-0"><span class="boxtext"></span></div>
+          <div class="box bl-0 bb-0"><span class="boxtext"></span></div>
+          <div class="box bb-0"><span class="boxtext"></span></div>
+          <div class="box bb-0 br-0"><span class="boxtext"></span></div>
+        </div>
+      <div class="gameInfo">
+        <h1 class="welcome">Welcome to Tic Tac Toe </h1>
+        <div style="margin: 50px;" id="resetholder">
+          
+          <button id="reset">Reset after Draw</button>
+        </div>
+        <div class="imgbox">
+          <img src="https://media2.giphy.com/media/MOWPkhRAUbR7i/giphy.gif?cid=6c09b9529gl04nnf9waw8qpbw3hdd45qbd6h43aqqj9ostb5&rid=giphy.gif&ct=g" alt="image" />
+        </div>
+        <input type="text" class="names" placeholder="Enter player 1">
+        <input type="text" class="names" placeholder="Enter player 2">
+       
+        <div class="score">
+          <div id="player1">0</div>
+        <div id="player2">0</div>
       </div>
-      <div class="product">
-        <img
-          src="https://offautan-uc1.azureedge.net/-/media/images/off/ph/products-en/products-landing/landing/off_overtime_product_collections_large_2x.jpg?la=en-ph"
-          alt="Product 2"
-        />
-
-        <p>$20.00</p>
-      </div>
-      <div class="product">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWZd5DWeyYAjnHb2NE95nMiIysmcyhTHzdGQ&usqp=CAU"
-          alt="Product 3"
-        />
-
-        <p>$20.00</p>
-      </div>
-      <div class="product">
-        <img
-          src="https://images.ctfassets.net/yp0eyja3qz0n/5Glj5hh4bSagent6cTC2An/0f319099844178119b7038313744d9ae/4084500311015_Luminous-Serum_0308.jpg?fm=png"
-          alt="Product 4"
-        />
-
-        <p>$30.00</p>
-      </div>
-      <div class="product">
-        <img
-          src="https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center-relaunch/en-us/general/brands/colgate-enamel-mouthwash-en-long.png"
-          alt="Product 5"
-        />
-
-        <p>$10.00</p>
       </div>
 
+      </div>
+      
     </div>
 
+    <div class="info">It is now turn for X</div>
+    <script>
+      let audioTurn = new Audio("/forMain/ting.mp3");
+let victory = new Audio("/forMain/victory.mp3");
+
+let turn = "X";
+let isgameover = false;
+
+const changeTurn = () => {
+  return turn === "X" ? "0" : "X";
+};
+
+const speech = function (winner) {
+  const synth = window.speechSynthesis;
+
+  const utterance = new SpeechSynthesisUtterance("The winner is" + winner);
+  synth.speak(utterance);
+};
+
+const checkWin = () => {
+  let boxtext = document.getElementsByClassName("boxtext");
+  let wins = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  wins.forEach((e) => {
+    if (
+      boxtext[e[0]].innerText === boxtext[e[1]].innerText &&
+      boxtext[e[2]].innerText === boxtext[e[1]].innerText &&
+      boxtext[e[0]].innerText !== ""
+    ) {
+      isgameover = true;
+      let winnerName = "NULL";
+      if (boxtext[e[0]].innerText === "X") {
+        winnerName = document.querySelectorAll("input")[0].value;
+        let score = Number(document.querySelector("#player1").innerText);
+        newscore = score + 1;
+        document.querySelector("#player1").innerText = newscore;
+      }
+
+      if (boxtext[e[0]].innerText === "0") {
+        winnerName = document.querySelectorAll("input")[1].value;
+        let score = Number(document.querySelector("#player2").innerText);
+        newscore = score + 1;
+        document.querySelector("#player2").innerText = newscore;
+      }
+      document.querySelector(".info").innerText =
+        boxtext[e[0]].innerText + " Won";
+      speech(winnerName);
+
+      let victoryMusic = function () {
+        victory.play();
+        document
+          .querySelector(".imgbox")
+          .getElementsByTagName("img")[0].style.width = "300px";
+      };
+      setTimeout(victoryMusic, 3000);
+
+      let resetGame = function () {
+        let boxtexts = document.querySelectorAll(".boxtext");
+        Array.from(boxtexts).forEach((element) => {
+          element.innerText = "";
+        });
+        turn = "X";
+        isgameover = false;
+
+        document.getElementsByClassName("info")[0].innerText =
+          "It is now turn for " + turn;
+        document
+          .querySelector(".imgbox")
+          .getElementsByTagName("img")[0].style.width = "0px";
+      };
+      setTimeout(resetGame, 6000);
+    }
+  });
+};
+
+let boxes = document.getElementsByClassName("box");
+Array.from(boxes).forEach((element) => {
+  let boxtext = element.querySelector(".boxtext");
+  element.addEventListener("click", () => {
+    if (boxtext.innerText === "") {
+      boxtext.innerText = turn;
+      turn = changeTurn();
+      audioTurn.play();
+      checkWin();
+
+      if (!isgameover) {
+        document.getElementsByClassName("info")[0].innerText =
+          "It is now turn for " + turn;
+      }
+    }
+  });
+});
+
+reset.addEventListener("click", () => {
+  let boxtexts = document.querySelectorAll(".boxtext");
+  Array.from(boxtexts).forEach((element) => {
+    element.innerText = "";
+  });
+  turn = "X";
+  isgameover = false;
+
+  document.getElementsByClassName("info")[0].innerText =
+    "It is now turn for " + turn;
+  document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width =
+    "0px";
+});
+
+
+    </script>
   </body>
 </html>
