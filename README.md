@@ -3,6 +3,9 @@
 # Description 
 This is a full stack web application which allows users to register on website in order to enter main website and play an addictive tictactoe game
 
+## Json Web Token for user authentication
+For seamless user experience, the feature of JSON Web Token has been added. User may accidently close the browser tab and then if they visit the main page from the navigation bar, they can directly visit the main page without logging in from login page. User must login again after the JWT expires. Currently the token expiry time is 90 seconds. You may change it as per your need. 
+
 ## Getting Started
 To run this website locally, you can follow these steps:
 
@@ -34,9 +37,8 @@ This website was built using:
 ## Scope of improvements
 There are many ways the webapp can be improved. Some of them are : 
 
-- JWT tokens setup for seamless user experience 
 - Tic tac toe game to be available for different users at same time by maintaining state of game and making it available to different users at same time and for in game communication using two way protocols like websocket
-- Making the UI better with bootstrap CSS and add more features and services enhancing user experience
+- Making the UI better with CSS frameworks like bootstrap, tailwind and add more features and services enhancing user experience
 - Maintain a global count of scores of every pair of users playing the game in any session 
 
 ## Suggestions
