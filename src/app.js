@@ -1,10 +1,15 @@
 const express=require("express");
 const path=require("path");
 const app=express();
+require("dotenv").config();
 const port=process.env.PORT||3001;
 require("./db/conn");
 const hbs=require("hbs");
 const Register=require("./models/registers");
+const jwt=require("jsonwebtoken");
+const cookieParser=require("cookie-parser");
+
+const auth=require("./middleware/auth");
 
 
 const static_path=path.join(__dirname,"../public");
@@ -16,6 +21,9 @@ const bcrypt=require("bcryptjs");
 
 
 app.use(express.json());
+
+app.use(cookieParser());
+
 app.use(express.urlencoded({extended:false}));
 
 app.use(express.static(static_path));
@@ -31,6 +39,11 @@ app.get("/",(req,res)=> {
     res.render("index");
 })
 
+
+app.get("/main",auth, (req,res)=> {
+    res.render("main");
+})
+
 app.get("/register",(req,res)=> {
     res.render("register");
 })
@@ -43,8 +56,18 @@ app.post("/register",async(req,res)=> {
             email:req.body.email
         })
 
-       const registered= await register.save();
-       res.status(201).render("main");
+
+    const token=await register.generateToken();
+
+    res.cookie("jwt",token,{
+        expires:new Date(Date.now()+90000),
+        httpOnly:true
+    });
+    
+
+
+    const registered= await register.save();
+    res.status(201).render("main");
         
 
 
@@ -64,6 +87,15 @@ app.post("/login",async(req,res)=> {
         const userName=await Register.findOne({username:username});
 
         const isMatch=await bcrypt.compare(password,userName.password);
+
+        const token=await userName.generateToken();
+
+        res.cookie("jwt",token,{
+            expires:new Date(Date.now()+90000),
+            httpOnly:true
+        });
+
+
         if(isMatch) {
             res.status(201).render("main");
         }
